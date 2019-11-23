@@ -6,23 +6,23 @@
 void numtoxlcolumn(int num, char *col);
 int xlcolumntonum(const char *col);
 
-int main(void) {
-    int i;
+int main(int argc, char **argv) {
+	int i;
 	char s1[255], s2[255];
 	scanf("%s", s1);
 	
 	if (isdigit(s1[0])) {
-	    s2[0] = '\0';
+		s2[0] = '\0';
 		numtoxlcolumn(atoi(s1), s2);
 		printf("%s\n", s2);
 	} else {
 		for(i = 0; i < strlen(s1); i++) {
-		    s1[i] = toupper(s1[i]);
+			s1[i] = toupper(s1[i]);
 		}
 
 		printf("%d\n", xlcolumntonum(s1));
 	}
-	
+
 	return 0;
 }
 
@@ -34,10 +34,10 @@ void numtoxlcolumn(int num, char *col)
 	strcpy(buf, "AAAAAA");
 	ret = buf;
 	for(maxnum = 308915776; maxnum > 1; maxnum/=26) {
-	    if (num == (maxnum - 1) / (26 - 1)) {
-		    strcpy(col, ret);
-		    return;
-	    }
+		if (num == (maxnum - 1) / (26 - 1)) {
+			strcpy(col, ret);
+			return;
+		}
 		if (num > (maxnum - 1) / (26 - 1)) break;
 		ret++;
 	}
